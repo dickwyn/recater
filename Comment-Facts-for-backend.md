@@ -1,4 +1,3 @@
-
 Temperature:
 
 Normal Temperature for baby: 36.4 Celcius ( 97.5 F)
