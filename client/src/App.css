@@ -72,3 +72,7 @@
     ". card-r card-r .";
   }
 }
+
+.heroimg {
+  max-width: 100%;
+}
