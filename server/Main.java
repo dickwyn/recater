@@ -1,6 +1,16 @@
+import java.util.ArrayList;
+
 public class Main {
 
+    ArrayList<Consumer> consumers;
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        consumers = new ArrayList<Consumer>();
+    }
+
+    public void Request (Distributor dist)
+    {
+        for ( Consumer i : consumers) {
+            dist.compareTo(consumers); // this is not right, need fixing in syntax
+        }
     }
 }
