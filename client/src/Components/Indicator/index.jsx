@@ -3,15 +3,6 @@ import { Progress } from 'reactstrap';
 import './style.css';
 
 export default class Indicator extends Component {
-    temperature = (temp) => {
-        if (temp > 0){
-            return "red"
-        }
-        else if(temp > 80) {
-            return "blue"
-        }
-    }
-
     render() {
         return (
         <div>
@@ -22,9 +13,8 @@ export default class Indicator extends Component {
                 </div>
                 <div className="temperature">
                     <h5>Temperature</h5>
-                    <div className="card" style={{background: this.temperature(75)}}>
+                    <div className="card">
                         70
-                        {this.temperature(80)}
                     </div>
                 </div>
                 <div className="heartrate">
