@@ -21,8 +21,8 @@
 
 ## Distributor 1
 - Name: Hacks for Humanity
-- Latitude: 500
-- Longitude: 500
+- Latitude: 33.41985
+- Longitude: -111.9371
 - Time: 2:00
-- Size: 30
+- Size: 40
 - Food type: V
