@@ -1,16 +1,29 @@
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Main {
 
-    ArrayList<Consumer> consumers;
+    
     public static void main(String[] args) {
-        consumers = new ArrayList<Consumer>();
+    	ArrayList<User> consumers = new ArrayList<User>();
+    	
     }
 
-    public void Request (Distributor dist)
-    {
-        for ( Consumer i : consumers) {
-            dist.compareTo(consumers); // this is not right, need fixing in syntax
+    public Map<Integer, User> requestConsumer(User dist, ArrayList<User> consumers) {
+    	Map<Integer, User> rankedConsumers = new HashMap<Integer, User>(consumers.size());
+    	
+    	for (User c : consumers) {
+            int rank = dist.compareTo(c);
+            if (rank >= 0) {
+            	while(rankedConsumers.containsKey(rank)) {
+            		rank++;
+            	}
+
+            	rankedConsumers.put(rank, c);
+            }
         }
+        
+        return rankedConsumers;
     }
 }
