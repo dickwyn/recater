@@ -60,17 +60,31 @@ public class Main {
 		for (int k : rankedConsumers.keySet()) {
 			count++;
 			if (count > 1) {
-				System.out.println("Expanding search area...\n");
+				System.out.print("Expanding search area.");
+				Thread.sleep(1000);
+				System.out.print(".");
+				Thread.sleep(1000);
+				System.out.print(".");
+				Thread.sleep(1000);
+				System.out.print(".");
+				Thread.sleep(1000);
+				System.out.println();
 			}
-			Thread.sleep(5000);
 			if (count == 3) {
 				confirmed = true;
 			}
 			
 			long startTime = System.currentTimeMillis(); // fetch starting time
 			while (confirmed || (System.currentTimeMillis() - startTime) < 10000) {
-				System.out.println("Sending request to " + rankedConsumers.get(k).getName() + "...");
-				Thread.sleep(5000);
+				System.out.print("Sending request to " + rankedConsumers.get(k).getName() + ".");
+				Thread.sleep(1000);
+				System.out.print(".");
+				Thread.sleep(1000);
+				System.out.print(".");
+				Thread.sleep(1000);
+				System.out.print(".");
+				Thread.sleep(1000);
+				System.out.println();
 				if (confirmed) {
 					System.out.println(rankedConsumers.get(k).getName() + " has confirmed the pickup\n");
 					return;
