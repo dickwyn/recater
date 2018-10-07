@@ -1,0 +1,9 @@
+.form-margin {
+    margin: 2em 10em;
+}
+
+@media only screen and (max-width: 768px){
+    .form-margin {
+        margin: 2em 1em;
+    }
+}
