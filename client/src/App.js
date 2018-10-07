@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Header from '../src/Components/Header';
 import Footer from '../src/Components/Footer';
-import logo from './logo.svg';
+import heroimg from './foodphoto.jpg';
 import './App.css';
 
 class App extends Component {
@@ -12,6 +12,7 @@ class App extends Component {
         <div className="container">
           <div className="title">
               <h2>Reducing food waste for food equality</h2>
+              <img class="heroimg" src={heroimg} alt="food-waste"></img>
           </div>
           <div class="subtitle">
             <p>
@@ -20,13 +21,13 @@ class App extends Component {
           </div>
           <div className="card-l">
             <h3>Hacks for Humanity</h3>
-            <h6>🥘 Vegetarian and Non-vegetarian</h6>
-            <h6><center>📍 5 miles away</center></h6>
+            <h6><span role="img" aria-label="Food">🥘</span> Vegetarian and Non-vegetarian</h6>
+            <h6><center><span role="img" aria-label="LocationMarker">📍</span> 5 miles away</center></h6>
           </div>
           <div className="card-r">
             <h3>International Night</h3>
-            <h6>🥘 Meat</h6>
-            <h6><center>📍 2 miles away</center></h6>
+            <h6><span role="img" aria-label="Food">🥘</span> Meat</h6>
+            <h6><center><span role="img" aria-label="LocationMarker">📍</span> 2 miles away</center></h6>
           </div>
         </div>
         <Footer />
