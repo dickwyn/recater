@@ -15,8 +15,9 @@ public class Main {
     		int decision;
 
     		System.out.println("Input the correlating number:");
-    		System.out.println("Create new consumer: 1");
-    		System.out.println("Create new distributor: 2");
+    		System.out.println("To create a new consumer type 1");
+    		System.out.println("To create a new distributor type 2");
+    		System.out.println("Your input: ");
     		decision = scan.nextInt();
     		scan.nextLine();
     		if (decision == 1) {
@@ -52,9 +53,14 @@ public class Main {
 		TreeMap<Integer, User> rankedConsumers = new TreeMap(sortConsumers((User) dist, consumers));
 
 		boolean confirmed = false;
+		int count = 0;
 		for (int k : rankedConsumers.keySet()) {
+			count++;
+			if (count == 3) {
+				confirmed = true;
+			}
 			long startTime = System.currentTimeMillis(); // fetch starting time
-			while (!confirmed || (System.currentTimeMillis() - startTime) < 10000) {
+			while (false || (System.currentTimeMillis() - startTime) < 10000) {
 				System.out.println("Sending request to " + rankedConsumers.get(k).getName() + "...");
 				Thread.sleep(5000);
 			}
@@ -70,7 +76,7 @@ public class Main {
 			String name = "";
 			int size = 0;
 			double lon = 0.0, lat = 0.0;
-			boolean[] foodType = new boolean[4];;
+			boolean[] foodType = new boolean[4];
 			
 			System.out.println("Name: ");
 			name = scan.nextLine();
@@ -99,7 +105,7 @@ public class Main {
 			}
 			
 			consumers.add(new Consumer(name, foodType, lat, lon, size));
-			System.out.println("Consumer succesfully added\n");
+			System.out.println("Consumer succesfully created\n");
 		}
 		catch (Exception e){
 			System.out.println("Encountered error: " + e);
