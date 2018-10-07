@@ -1,3 +1,5 @@
 .container-footer {
-    margin: 2rem 0rem 0rem
+    margin: 2rem 0rem 0rem;
+    background-color: lightgray;
+    padding: 1rem 0rem 1rem;
 }
