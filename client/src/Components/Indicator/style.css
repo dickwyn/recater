@@ -27,6 +27,10 @@
     background-color: blue;
 }
 
+.temperature .card {
+    color: white;
+}
+
 .heartrate {
     grid-area: hr;
     background-color: green;
