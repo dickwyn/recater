@@ -12,13 +12,8 @@ public class Main {
 		while (true) {
 			try {
 				Scanner scan = new Scanner(System.in);
-
 				int decision;
-
-				for (User i : consumers) {
-					System.out.println(i.getName());
-				}
-				System.out.println();
+				
 				System.out.println("Input the correlating number:");
 				System.out.println("To create a new consumer type 1");
 				System.out.println("To create a new distributor type 2");
@@ -44,7 +39,6 @@ public class Main {
 
 		for (User c : consumers) {
 			int rank = dist.compareTo(c);
-			System.out.println("rank: " + rank);
 			if (rank >= 0) {
 				while (rankedConsumers.containsKey(rank)) {
 					rank++;
@@ -65,21 +59,24 @@ public class Main {
 		
 		for (int k : rankedConsumers.keySet()) {
 			count++;
-			System.out.println("test#: " + count);
-			if (count == 2) {
-				confirmed = true;
+			if (count > 1) {
+				System.out.println("Expanding search area...\n");
 			}
-
-			if (confirmed) {
-				System.out.println(rankedConsumers.get(k).getName() + " has confirmed the pickup");
-				return;
+			Thread.sleep(5000);
+			if (count == 3) {
+				confirmed = true;
 			}
 			
 			long startTime = System.currentTimeMillis(); // fetch starting time
-			while (!confirmed || (System.currentTimeMillis() - startTime) < 10000) {
+			while (confirmed || (System.currentTimeMillis() - startTime) < 10000) {
 				System.out.println("Sending request to " + rankedConsumers.get(k).getName() + "...");
 				Thread.sleep(5000);
+				if (confirmed) {
+					System.out.println(rankedConsumers.get(k).getName() + " has confirmed the pickup\n");
+					return;
+				}
 			}
+			
 		}
 	}
 
@@ -160,7 +157,6 @@ public class Main {
 				}
 			}
 			Distributor dist = new Distributor(name, foodType, lat, lon, size, time);
-			System.out.println(dist.getName() + "");
 			requestConsumers(dist, consumers);
 		} catch (Exception e) {
 			System.out.println("Encountered input error, try again");

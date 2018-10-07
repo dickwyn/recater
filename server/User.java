@@ -60,25 +60,21 @@ public class User implements Comparable<User> {
     	int rank = 0;
     	for (int i = 0; i < foodType.length; i++) {
     		if (this.getFoodType()[i] != other.getFoodType()[i]) {
-    			rank = -1;
-    			return rank;
+    			rank--;
+    		} else {
+    			rank++;
     		}
     	}
     	
-    	if (this.getSize() - other.getSize() > 0) {
-    		rank = -1;
-    		return rank;
+    	int sizeDiff = Math.abs(this.getSize() - other.getSize());
+    	if (sizeDiff > 0) {
+    		rank = rank - sizeDiff;
     	} else {
-    		rank = Math.abs(this.getSize() - other.getSize());
+    		rank = rank + sizeDiff;
     	}
     	
     	int distance = (int) distance(this.getLatitude(), other.getLatitude(), this.getLongitude(), other.getLongitude());
-    	if (distance > 10000) {
-    		rank = -1;
-    		return rank;
-    	} else {
-    		rank = rank + distance;
-    	}
+    	rank = rank + distance;
     	
     	return rank;
     }
