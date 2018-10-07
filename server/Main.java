@@ -12,22 +12,26 @@ public class Main {
     	while (true) {
     		Scanner scan = new Scanner(System.in);
 
-    		String decision;
-        	String yes = "Y";
-        	String no = "N";
+    		int decision;
 
-    		System.out.println("Do you want to create, type Y or N?");
-    		decision = scan.nextLine();
-
-        	if (decision.equals(yes)) {
-        		printMenu(scan);
+    		System.out.println("Input the correlating number:");
+    		System.out.println("Create new consumer: 1");
+    		System.out.println("Create new distributor: 2");
+    		decision = scan.nextInt();
+    		
+    		if (decision == 1) {
+    			printMenu1(scan, consumers);
+    		}
+    		else if (decision == 2) {
+        		printMenu2(scan, consumers);
+    		}
+    		else {
+    			System.out.println("Unidentified input");
     		}
     	}
 	}
 
-	System.out.println("Okay, Thank you for using our service");
-
-	public Map<Integer, User> sortConsumers(User dist, ArrayList<User> consumers) {
+	public static Map<Integer, User> sortConsumers(User dist, ArrayList<User> consumers) {
 		Map<Integer, User> rankedConsumers = new HashMap<Integer, User>(consumers.size());
 
 		for (User c : consumers) {
@@ -44,7 +48,7 @@ public class Main {
 		return rankedConsumers;
 	}
 
-	public void requestCosumers(Distributor dist, ArrayList<User> consumers) {
+	public static void requestConsumers(Distributor dist, ArrayList<User> consumers) throws InterruptedException {
 		TreeMap<Integer, User> rankedConsumers = new TreeMap(sortConsumers((User) dist, consumers));
 
 		boolean confirmed = false;
@@ -61,26 +65,81 @@ public class Main {
 		}
 	}
 	
-	public static void printMenu(Scanner scan) {
-		int time;
-		double lon,lat;
-		String size, foodType;
-		System.out.println("Location ");
-		System.out.println("");
-		System.out.println("Longitude: ");
-		lon = scan.nextDouble();
-		System.out.println("Latitude: ");
-		lat = scan.nextDouble();
-		System.out.println("");
-		System.out.println("Size (<50, <100, <200, <300");
-		size = scan.nextLine();
-		System.out.println("");
-		System.out.println("Time (2 / 4 / 12 / 24 / 48 ; in hrs)" );
-		time = scan.nextInt();
-		System.out.println("");
-		System.out.println("Food Type (Vegan / Vegetarian / Non - Vegetarian / Others");
-		foodType = scan.nextLine();
-		System.out.println();
-		
+	public static void printMenu1(Scanner scan, ArrayList<User> consumers) {
+		try {
+			String name = "";
+			int size = 0;
+			double lon = 0.0, lat = 0.0;
+			boolean[] foodType = new boolean[4];;
+			
+			System.out.println("Name: ");
+			name = scan.nextLine();
+			System.out.println("Latitude: ");
+			lat = scan.nextDouble();
+			System.out.println("Longitude: ");
+			lon = scan.nextDouble();
+			System.out.println("Size: ");
+			size = scan.nextInt();
+			System.out.println("Food Type: (V for Vegan; Veg for Vegetarian; NonVeg for Non-Vegetarian; etc for Others)");
+			System.out.println("If more than one input seprate by space");
+			String temp[] = scan.nextLine().split(" ");
+			for (String i : temp) {
+				if (i.equals("V")) {
+					foodType[0] = true;
+				} else if(i.equals("Veg")) {
+					foodType[1] = true;
+				} else if(i.equals("NonVeg")) {
+					foodType[2] = true;
+				} else if(i.equals("etc")) {
+					foodType[3] = true;
+				}
+			}
+			
+			consumers.add(new Consumer(name, foodType, lat, lon, size));
+			System.out.println("Consumer succesfully added\n");
+		}
+		catch (Exception e){
+			System.out.println("Encountered error: " + e);
+		}
+	}
+
+	public static void printMenu2(Scanner scan, ArrayList<User> consumers) {
+		try {
+			String name = "";
+			int size = 0, time = 0;
+			double lon = 0.0, lat = 0.0;
+			boolean[] foodType = new boolean[4];;
+			
+			System.out.println("Name: ");
+			name = scan.nextLine();
+			System.out.println("Latitude: ");
+			lat = scan.nextDouble();
+			System.out.println("Longitude: ");
+			lon = scan.nextDouble();
+			System.out.println("Time (hh:mm): ");
+			String[] stringTime = scan.nextLine().split(":");
+			time = Integer.parseInt(stringTime[0])*3600 + Integer.parseInt(stringTime[1])*60;
+			System.out.println("Size: ");
+			size = scan.nextInt();
+			System.out.println("Food Type: (V for Vegan; Veg for Vegetarian; NonVeg for Non-Vegetarian; etc for Others)");
+			System.out.println("If more than one input seprate by space");
+			String temp[] = scan.nextLine().split(" ");
+			for (String i : temp) {
+				if (i.equals("V")) {
+					foodType[0] = true;
+				} else if(i.equals("Veg")) {
+					foodType[1] = true;
+				} else if(i.equals("NonVeg")) {
+					foodType[2] = true;
+				} else if(i.equals("etc")) {
+					foodType[3] = true;
+				}
+			}
+			
+			requestConsumers(new Distributor(name, foodType, lat, lon, size, time), consumers);
+		}
+		catch (Exception e){
+			System.out.println("Encountered error: " + e);
+		}
 	}
 }
