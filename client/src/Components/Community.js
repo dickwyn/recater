@@ -15,7 +15,7 @@ class Community extends Component {
                     <Input type="location" placeholder="ASU Tempe Campus" />
                 </FormGroup>
                 <FormGroup>
-                    <Label for="exampleSelect">Servings</Label>
+                    <Label for="foodServings">Servings</Label>
                     <Input type="select" name="select" id="exampleSelect">
                         <option>&#60; 50</option>
                         <option>&#60; 100</option>
@@ -24,8 +24,8 @@ class Community extends Component {
                     </Input>
                 </FormGroup>
                 <FormGroup>
-                    <Label for="exampleSelect">Time to Collect</Label>
-                    <Input type="select" name="select" id="exampleSelect">
+                    <Label for="foodCollectionTime">Time to Collect</Label>
+                    <Input type="select" name="select" id="selectFoodCollection">
                         <option>2 hours</option>
                         <option>4 hours</option>
                         <option>12 hours</option>
@@ -34,8 +34,8 @@ class Community extends Component {
                     </Input>
                 </FormGroup>
                 <FormGroup>
-                    <Label for="foodAllergy">Food Allergy</Label>
-                    <Input type="select" name="selectMulti" id="selectFoodAllergy" multiple>
+                    <Label for="foodType">Food Type</Label>
+                    <Input type="select" name="select" id="selectFoodType" multiple>
                         <option>Vegan</option>
                         <option>Vegetarian</option>
                         <option>Non-Vegetarian</option>
