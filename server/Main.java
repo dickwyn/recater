@@ -54,16 +54,19 @@ public class Main {
 
 		boolean confirmed = false;
 		int count = 0;
+		
 		for (int k : rankedConsumers.keySet()) {
 			count++;
 			if (count == 3) {
 				confirmed = true;
 			}
+			
 			long startTime = System.currentTimeMillis(); // fetch starting time
-			while (false || (System.currentTimeMillis() - startTime) < 10000) {
+			while (!confirmed || (System.currentTimeMillis() - startTime) < 10000) {
 				System.out.println("Sending request to " + rankedConsumers.get(k).getName() + "...");
 				Thread.sleep(5000);
 			}
+			
 			if (confirmed) {
 				System.out.println(rankedConsumers.get(k).getName() + " has confirmed the pickup");
 				return;
@@ -91,13 +94,13 @@ public class Main {
 			scan.nextLine();
 			System.out.println("Food Type: (V for Vegan; Veg for Vegetarian; NonVeg for Non-Vegetarian; etc for Others)");
 			System.out.println("If more than one input seprate by space");
-			String temp[] = scan.nextLine().split(" ");
+			String temp[] = scan.nextLine().toLowerCase().split(" ");
 			for (String i : temp) {
-				if (i.equals("V")) {
+				if (i.equals("v")) {
 					foodType[0] = true;
-				} else if(i.equals("Veg")) {
+				} else if(i.equals("veg")) {
 					foodType[1] = true;
-				} else if(i.equals("NonVeg")) {
+				} else if(i.equals("nonveg")) {
 					foodType[2] = true;
 				} else if(i.equals("etc")) {
 					foodType[3] = true;
@@ -108,7 +111,7 @@ public class Main {
 			System.out.println("Consumer succesfully created\n");
 		}
 		catch (Exception e){
-			System.out.println("Encountered error: " + e);
+			System.out.println("Encountered input error, try again");
 		}
 	}
 
@@ -147,8 +150,8 @@ public class Main {
 					foodType[3] = true;
 				}
 			}
-			
-			requestConsumers(new Distributor(name, foodType, lat, lon, size, time), consumers);
+			Distributor dist = new Distributor(name, foodType, lat, lon, size, time);
+			requestConsumers(dist, consumers);
 		}
 		catch (Exception e){
 			System.out.println("Encountered error: " + e);
