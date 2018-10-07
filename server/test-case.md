@@ -10,7 +10,7 @@
 - Latitude: 600
 - Longitude: 600
 - Size: 50
-- Food type: O
+- Food type: etc
 
 ## Consumer 3
 - Name: Food for Hungry
@@ -24,5 +24,5 @@
 - Latitude: 500
 - Longitude: 500
 - Time: 2:00
-- Size: 150
+- Size: 30
 - Food type: V

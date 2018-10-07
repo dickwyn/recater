@@ -15,6 +15,10 @@ public class Main {
 
 				int decision;
 
+				for (User i : consumers) {
+					System.out.println(i.getName());
+				}
+				System.out.println();
 				System.out.println("Input the correlating number:");
 				System.out.println("To create a new consumer type 1");
 				System.out.println("To create a new distributor type 2");
@@ -40,6 +44,7 @@ public class Main {
 
 		for (User c : consumers) {
 			int rank = dist.compareTo(c);
+			System.out.println("rank: " + rank);
 			if (rank >= 0) {
 				while (rankedConsumers.containsKey(rank)) {
 					rank++;
@@ -48,31 +53,32 @@ public class Main {
 				rankedConsumers.put(rank, c);
 			}
 		}
-
+		
 		return rankedConsumers;
 	}
 
 	public static void requestConsumers(Distributor dist, ArrayList<User> consumers) throws InterruptedException {
 		TreeMap<Integer, User> rankedConsumers = new TreeMap(sortConsumers((User) dist, consumers));
-
+		
 		boolean confirmed = false;
 		int count = 0;
-
+		
 		for (int k : rankedConsumers.keySet()) {
 			count++;
-			if (count == 3) {
+			System.out.println("test#: " + count);
+			if (count == 2) {
 				confirmed = true;
-			}
-
-			long startTime = System.currentTimeMillis(); // fetch starting time
-			while (!confirmed || (System.currentTimeMillis() - startTime) < 10000) {
-				System.out.println("Sending request to " + rankedConsumers.get(k).getName() + "...");
-				Thread.sleep(5000);
 			}
 
 			if (confirmed) {
 				System.out.println(rankedConsumers.get(k).getName() + " has confirmed the pickup");
 				return;
+			}
+			
+			long startTime = System.currentTimeMillis(); // fetch starting time
+			while (!confirmed || (System.currentTimeMillis() - startTime) < 10000) {
+				System.out.println("Sending request to " + rankedConsumers.get(k).getName() + "...");
+				Thread.sleep(5000);
 			}
 		}
 	}
@@ -95,8 +101,7 @@ public class Main {
 			System.out.println("Size: ");
 			size = scan.nextInt();
 			scan.nextLine();
-			System.out
-					.println("Food Type: (V for Vegan; Veg for Vegetarian; NonVeg for Non-Vegetarian; etc for Others)");
+			System.out.println("Food Type: (V for Vegan; Veg for Vegetarian; NonVeg for Non-Vegetarian; etc for Others)");
 			System.out.println("If more than one input seprate by space");
 			String temp[] = scan.nextLine().toLowerCase().split(" ");
 			for (String i : temp) {
@@ -140,25 +145,25 @@ public class Main {
 			System.out.println("Size: ");
 			size = scan.nextInt();
 			scan.nextLine();
-			System.out
-					.println("Food Type: (V for Vegan; Veg for Vegetarian; NonVeg for Non-Vegetarian; etc for Others)");
+			System.out.println("Food Type: (V for Vegan; Veg for Vegetarian; NonVeg for Non-Vegetarian; etc for Others)");
 			System.out.println("If more than one input seprate by space");
-			String temp[] = scan.nextLine().split(" ");
+			String temp[] = scan.nextLine().toLowerCase().split(" ");
 			for (String i : temp) {
-				if (i.equals("V")) {
+				if (i.equals("v")) {
 					foodType[0] = true;
-				} else if (i.equals("Veg")) {
+				} else if (i.equals("veg")) {
 					foodType[1] = true;
-				} else if (i.equals("NonVeg")) {
+				} else if (i.equals("nonveg")) {
 					foodType[2] = true;
 				} else if (i.equals("etc")) {
 					foodType[3] = true;
 				}
 			}
 			Distributor dist = new Distributor(name, foodType, lat, lon, size, time);
+			System.out.println(dist.getName() + "");
 			requestConsumers(dist, consumers);
 		} catch (Exception e) {
-			System.out.println("Encountered error: " + e);
+			System.out.println("Encountered input error, try again");
 		}
 	}
 }
