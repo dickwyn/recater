@@ -5,7 +5,8 @@ import {
   NavbarToggler,
   NavbarBrand,
   Nav,
-  UncontrolledDropdown} 
+  NavItem, 
+  NavLink } 
 from 'reactstrap';
 
 export default class Header extends React.Component {
@@ -26,12 +27,13 @@ export default class Header extends React.Component {
     return (
       <div>
         <Navbar color="light" light expand="md">
-          <NavbarBrand href="/">Where is Jimmy?</NavbarBrand>
+          <NavbarBrand href="/">Recater</NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
-              <UncontrolledDropdown nav inNavbar>
-              </UncontrolledDropdown>
+              <NavItem>
+                <NavLink href="/Community">Community</NavLink>
+              </NavItem>
             </Nav>
           </Collapse>
         </Navbar>
