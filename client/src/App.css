@@ -30,3 +30,45 @@
     transform: rotate(360deg);
   }
 }
+
+.container {
+  margin: 2rem 0rem 0rem;
+  display: grid;
+  grid-template-columns: 5% 45% 45% 5%;
+  grid-template-areas:
+      ". title title ."
+      ". subtitle subtitle ."
+      ". card-l card-r .";
+  grid-row-gap: 30px;
+}
+
+.title {
+  grid-area: title;
+}
+
+.subtitle {
+  grid-area: subtitle;
+  text-align: left;
+}
+
+.card-l {
+  grid-area: card-l;
+  margin: 0.5em;
+  outline: 1px solid gray;
+}
+
+.card-r {
+  grid-area: card-r;
+  margin: 0.5em;
+  outline: 1px solid gray;
+}
+
+@media only screen and (max-width: 768px){
+  .container {
+    grid-template-areas:
+    ". title title ."
+    ". subtitle subtitle ."
+    ". card-l card-l ."
+    ". card-r card-r .";
+  }
+}
