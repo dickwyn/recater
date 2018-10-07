@@ -18,7 +18,7 @@ public class Main {
     		System.out.println("Create new consumer: 1");
     		System.out.println("Create new distributor: 2");
     		decision = scan.nextInt();
-    		
+    		scan.nextLine();
     		if (decision == 1) {
     			printMenu1(scan, consumers);
     		}
@@ -76,10 +76,13 @@ public class Main {
 			name = scan.nextLine();
 			System.out.println("Latitude: ");
 			lat = scan.nextDouble();
+			scan.nextLine();
 			System.out.println("Longitude: ");
 			lon = scan.nextDouble();
+			scan.nextLine();
 			System.out.println("Size: ");
 			size = scan.nextInt();
+			scan.nextLine();
 			System.out.println("Food Type: (V for Vegan; Veg for Vegetarian; NonVeg for Non-Vegetarian; etc for Others)");
 			System.out.println("If more than one input seprate by space");
 			String temp[] = scan.nextLine().split(" ");
@@ -114,13 +117,16 @@ public class Main {
 			name = scan.nextLine();
 			System.out.println("Latitude: ");
 			lat = scan.nextDouble();
+			scan.nextLine();
 			System.out.println("Longitude: ");
 			lon = scan.nextDouble();
+			scan.nextLine();
 			System.out.println("Time (hh:mm): ");
 			String[] stringTime = scan.nextLine().split(":");
 			time = Integer.parseInt(stringTime[0])*3600 + Integer.parseInt(stringTime[1])*60;
 			System.out.println("Size: ");
 			size = scan.nextInt();
+			scan.nextLine();
 			System.out.println("Food Type: (V for Vegan; Veg for Vegetarian; NonVeg for Non-Vegetarian; etc for Others)");
 			System.out.println("If more than one input seprate by space");
 			String temp[] = scan.nextLine().split(" ");
