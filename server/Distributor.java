@@ -3,6 +3,15 @@
 public class Distributor extends User{
 	private int time;
 	
+    public Distributor(String name, boolean[] foodType, double latitude, double longitude, int size, int time) {
+    	super(name, foodType, latitude, longitude, size);
+    	this.time = time;
+    }
+	
+	public String getName() {
+		return super.getName();
+	}
+	
     public boolean[] getFoodType() {
         return super.getFoodType();
     }
