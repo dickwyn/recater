@@ -1,14 +1,14 @@
 abstract class User implements Comparable<User> {
-    private boolean[] foodType;
-    private double locationX;
-    private double locationY;
-    private int time;
-    private int size;
+    protected boolean[] foodType;
+    protected double locationX;
+    protected double locationY;
+    protected int time;
+    protected int size;
 
     public User () {
         foodType = new boolean[4];
         locationX = 0.0;
-        locationY = 0,0
+        locationY = 0.0;
         time = 0;
         size = 0;
     }
@@ -43,6 +43,7 @@ abstract class User implements Comparable<User> {
     }
 
     public int compareTo(User other) {
-        
+
+
     }
 }
