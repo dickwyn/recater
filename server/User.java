@@ -47,9 +47,11 @@ public class User implements Comparable<User> {
     	if (this.getSize() - other.getSize() > 0) {
     		rank = -1;
     		return rank;
+    	} else {
+    		rank = Math.abs(this.getSize() - other.getSize());
     	}
     	
-    	rank = (int) distance(this.getLatitude(), other.getLatitude(), this.getLongitude(), other.getLongitude());
+    	rank = rank + (int) distance(this.getLatitude(), other.getLatitude(), this.getLongitude(), other.getLongitude());
     	return rank;
     }
     
