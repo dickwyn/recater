@@ -1,4 +1,4 @@
-# Jimmy's Hungry
+# Recater
 Food from catering events that are not eaten gets thrown out. This service allows caterers and local community members alike to benefit to serve needy individuals. Created at Hacks for Humanity 2018 at Arizona State University (Oct 7 - 8, 2018).
 
 ## Running the Project 
@@ -7,7 +7,7 @@ Food from catering events that are not eaten gets thrown out. This service allow
 
 Clone or fork this repository to your local machine:
 ```
-$ git clone https://github.com/dickwyn/table6.git
+$ git clone https://github.com/dickwyn/recater.git
 ```
 Install the depencies with the following commands:
 ```
