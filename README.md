@@ -1,5 +1,5 @@
-# Where is Jimmy
-Created at Hacks for Humanity 2018 at Arizona State University (Oct 7 - 8, 2018).
+# Jimmy's Hungry
+Food from catering events that are not eaten gets thrown out. This service allows caterers and local community members alike to benefit to serve needy individuals. Created at Hacks for Humanity 2018 at Arizona State University (Oct 7 - 8, 2018).
 
 ## Running the Project 
 
