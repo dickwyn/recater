@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import Header from './Header';
+import Header from '../Components/Header';
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
-import './Form.css';
+import './Community.css';
 
 class Community extends Component {
   render() {
